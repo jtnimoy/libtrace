@@ -33,7 +33,7 @@ void PPM::load_from_stream(istream *in)
  
  //Now ready to read in the binary data
  allocate();
- (*in).read(get_image(), (width*height*3));
+ in->read((char*)get_image(), (width*height*3));
 }
 
 void PPM::save_to_file(char *filename)
@@ -54,5 +54,5 @@ void PPM::save_to_stream(ostream *out)
  (*out) << "P6\n" << get_width() << "\n" << get_height() << "\n" << 255 << "\n";
  
  //Write out the binary data
- (*out).write(get_image(), (width*height*3));
+ (*out).write((char*)get_image(), (width*height*3));
 }
